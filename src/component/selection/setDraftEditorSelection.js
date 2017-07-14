@@ -218,6 +218,9 @@ function addFocusToSelection(
   offset: number,
   selectionState: SelectionState,
 ): void {
+  if (!(selection.rangeCount > 0)) {
+    return;
+  }
   if (selection.extend && containsNode(getActiveElement(), node)) {
     // If `extend` is called while another element has focus, an error is
     // thrown. We therefore disable `extend` if the active element is somewhere
