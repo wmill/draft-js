@@ -25,7 +25,7 @@ var setImmediate;
 if (global.setImmediate) {
   setImmediate = window.setImmediate.bind(window); // because IE IS STUPID.
 } else {
-  setImmediate = require('fbjs/lib/setImmediate');
+  setImmediate = require('setImmediate');
 }
 
 import type DraftEditor from 'DraftEditor.react';
