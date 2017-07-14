@@ -24,6 +24,8 @@ var ReactDOM = require('ReactDOM');
 const invariant = require('invariant');
 var setDraftEditorSelection = require('setDraftEditorSelection');
 
+var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+
 type Props = {
   // The block that contains this leaf.
   block: ContentBlock,
@@ -117,7 +119,7 @@ class DraftEditorLeaf extends React.Component {
     return (
       leafNode.textContent !== nextProps.text ||
       nextProps.styleSet !== this.props.styleSet ||
-      nextProps.forceSelection
+      (!isIE11 && nextProps.forceSelection)
     );
   }
 

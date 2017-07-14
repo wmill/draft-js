@@ -20,7 +20,13 @@ var UserAgent = require('UserAgent');
 var getEntityKeyForSelection = require('getEntityKeyForSelection');
 var isSelectionAtLeafStart = require('isSelectionAtLeafStart');
 var nullthrows = require('nullthrows');
-var setImmediate = require('setImmediate');
+
+var setImmediate;
+if (global.setImmediate) {
+  setImmediate = window.setImmediate.bind(window); // because IE IS STUPID.
+} else {
+  setImmediate = require('fbjs/lib/setImmediate');
+}
 
 import type DraftEditor from 'DraftEditor.react';
 import type {DraftInlineStyle} from 'DraftInlineStyle';
